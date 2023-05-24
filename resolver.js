@@ -17,10 +17,8 @@ const customers = [
         const { id } = args;
         return customers.find((customer) => customer.id === id);
       },
-    },
-    GymCustomer: {
-      memberships: (parent, args, context, info) => {
-        const { id } = parent;
+      memberships:(parent, args, context, info) => {
+        const { id } = args;
         return memberships.filter((membership) => membership.customerId === id);
       },
     },
