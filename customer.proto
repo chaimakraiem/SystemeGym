@@ -1,0 +1,52 @@
+syntax = "proto3";
+package customer;
+
+// Définition du message pour un client de la salle de sport
+message GymCustomer {
+  string customer_id = 1;
+  string name = 2;
+  string email = 3;
+  string phone_number = 4;
+  //repeated GymMembership memberships = 5;
+}
+
+// Définition des messages de requête et de réponse pour les méthodes de client
+message CreateCustomerRequest {
+  GymCustomer customer = 1;
+}
+
+message CreateCustomerResponse {
+  GymCustomer customer = 1;
+}
+
+message GetCustomerRequest {
+  string customer_id = 1;
+}
+
+message GetCustomerResponse {
+  GymCustomer customer = 1;
+}
+
+message UpdateCustomerRequest {
+  GymCustomer customer = 1;
+}
+
+message UpdateCustomerResponse {
+  GymCustomer customer = 1;
+}
+
+message DeleteCustomerRequest {
+  string customer_id = 1;
+}
+
+message DeleteCustomerResponse {
+  string message = 1;
+}
+
+// Définition du service de gestion des clients de la salle de sport
+service GymCustomerService {
+  rpc CreateCustomer(CreateCustomerRequest) returns (CreateCustomerResponse);
+  rpc GetCustomer(GetCustomerRequest) returns (GetCustomerResponse);
+  rpc UpdateCustomer(UpdateCustomerRequest) returns (UpdateCustomerResponse);
+  rpc DeleteCustomer(DeleteCustomerRequest) returns (DeleteCustomerResponse);
+}

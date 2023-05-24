@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package class;
+
+// Definition of the Class message
+message Class {
+  string id = 1;
+  string name = 2;
+  string instructor = 3;
+  repeated string schedule = 4;
+}
+
+// Definition of the request and response messages for the methods
+message GetClassRequest {
+  string class_id = 1;
+}
+
+message GetClassResponse {
+  Class class = 1;
+}
+
+message CreateClassRequest {
+  string name = 1;
+  string instructor = 2;
+  repeated string schedule = 3;
+}
+
+message CreateClassResponse {
+  Class class = 1;
+}
+
+message UpdateClassRequest {
+  string class_id = 1;
+  string name = 2;
+  string instructor = 3;
+  repeated string schedule = 4;
+}
+
+message UpdateClassResponse {
+  Class class = 1;
+}
+
+message DeleteClassRequest {
+  string class_id = 1;
+}
+
+message DeleteClassResponse {
+  string message = 1;
+}
+
+// Definition of the Class service
+service ClassService {
+  rpc GetClass(GetClassRequest) returns (GetClassResponse);
+  rpc CreateClass(CreateClassRequest) returns (CreateClassResponse);
+  rpc UpdateClass(UpdateClassRequest) returns (UpdateClassResponse);
+  rpc DeleteClass(DeleteClassRequest) returns (DeleteClassResponse);
+}

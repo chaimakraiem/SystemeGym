@@ -1,0 +1,53 @@
+syntax = "proto3";
+package gym;
+
+// Définition du message pour un abonnement à la salle de sport
+message GymMembership {
+  string member_id = 1;
+  string name = 2;
+  string email = 3;
+  string start_date = 4;
+  string end_date = 5;
+  repeated string classes = 6;
+}
+
+// Définition des messages de requête et de réponse pour les méthodes d'abonnement
+message CreateMembershipRequest {
+  GymMembership membership = 1;
+}
+
+message CreateMembershipResponse {
+  GymMembership membership = 1;
+}
+
+message GetMembershipRequest {
+  string member_id = 1;
+}
+
+message GetMembershipResponse {
+  GymMembership membership = 1;
+}
+
+message UpdateMembershipRequest {
+  GymMembership membership = 1;
+}
+
+message UpdateMembershipResponse {
+  GymMembership membership = 1;
+}
+
+message CancelMembershipRequest {
+  string member_id = 1;
+}
+
+message CancelMembershipResponse {
+  string message = 1;
+}
+
+// Définition du service d'abonnement à la salle de sport
+service GymMembershipService {
+  rpc CreateMembership(CreateMembershipRequest) returns (CreateMembershipResponse);
+  rpc GetMembership(GetMembershipRequest) returns (GetMembershipResponse);
+  rpc UpdateMembership(UpdateMembershipRequest) returns (UpdateMembershipResponse);
+  rpc CancelMembership(CancelMembershipRequest) returns (CancelMembershipResponse);
+}
